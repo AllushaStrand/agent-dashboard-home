@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Personalise Your Agents</h1>
+<p>These answers will help your agents respond in a way that suits you.</p>
+
+<form method="post" class="agent-card">
+    {% csrf_token %}
+
+    <h3>How do you prefer to be answered?</h3>
+    {{ form.answer_style }}
+
+    <h3>How much detail do you want?</h3>
+    {{ form.detail_level }}
+
+    <h3>What is your primary goal right now?</h3>
+    {{ form.primary_goal }}
+
+    <br><br>
+    <button type="submit">Save preferences</button>
+</form>
+{% endblock %}

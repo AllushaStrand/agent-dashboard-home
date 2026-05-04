@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Job Search Agent</h1>
+
+<form method="post" class="agent-card">
+    {% csrf_token %}
+
+    <textarea name="job_description" rows="10" style="width:100%;" placeholder="Paste job description here"></textarea>
+
+    <br><br>
+    <button type="submit">Run Agent</button>
+</form>
+
+{% if output %}
+<div class="agent-card" style="margin-top:20px;">
+    <h3>Output</h3>
+    <pre>{{ output }}</pre>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agent Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <h2>AgentOS</h2>
+            <nav>
+    <a href="/">Dashboard</a>
+    <a href="/agents/job-agent/">Job Agent</a>
+    <a href="/jobs/applications/">Applications</a>
+    <a href="/accounts/profile/">Profile</a>
+
+    <form method="post" action="/accounts/logout/">
+        {% csrf_token %}
+        <button type="submit" class="logout-button">Logout</button>
+    </form>
+</nav>
+        </aside>
+
+        <main class="content">
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+</body>
+</html>

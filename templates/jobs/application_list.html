@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Application Tracker</h1>
+
+<p>Track job applications and use outcomes to improve your agent over time.</p>
+
+<a href="/jobs/applications/new/">Add application</a>
+
+<div class="agent-card" style="margin-top: 20px;">
+    <table style="width:100%; text-align:left;">
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Decision</th>
+                <th>Score</th>
+                <th>Applied date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for application in applications %}
+            <tr>
+                <td>{{ application.company }}</td>
+                <td>{{ application.role_title }}</td>
+                <td>{{ application.get_status_display }}</td>
+                <td>{{ application.get_decision_display }}</td>
+                <td>{{ application.score }}</td>
+                <td>{{ application.applied_date }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No applications yet.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
